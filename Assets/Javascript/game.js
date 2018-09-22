@@ -81,15 +81,23 @@ function showProgress() {
 function showScores(){
     var gameOverHtml = "<h1>Result</h1>";
     gameOverHtml += "<h2 id='score'> Your scores: " + quiz.score + "/5</h2>";
+    var rightAnswer = "<p>Correct Answers<hr>1.Scyth of Vitur<hr>2.RuneWiki<hr>3.2147m coins<hr>4.2007<hr>5.Raids<hr></p>";
+
     var element = document.getElementById("quiz");
-    element.innerHTML = gameOverHtml;
+    element.innerHTML = gameOverHtml + rightAnswer;
 
     $('#quiz').append("<button>Restart Quiz</button>");
     
     $('button').on('click', function(){
         location.reload();
     });
+    
+    // if(quiz.score >= 3){
+    //     alert("You got a passing Grade!");
+    // }
+    
 }
+    
 
 // function sets object format for question
 function Question(text, choices, answer){
@@ -126,9 +134,9 @@ Quiz.prototype.guess = function(answer) {
         this.score++;
     
         // if score is 5/5
-        if(this.score === 5){
-            alert("You Passed!");
-        }
+        // if(this.score === 5){
+        //     alert("You Passed!");
+        // }
 
     }
     this.questionIndex++;
@@ -139,7 +147,7 @@ Quiz.prototype.guess = function(answer) {
 // array of questions to be displayed in format
 var questions = [
     new Question("What is the most expensive item in runescape?", ["Twisted Bow", "Scyth of Vitur", "Goblin Mail", "Purple Party Hat"], "Scyth of Vitur"),
-    new Question("Where is the most reliable source of info on runescape?", ["google", "runewiki", "yahoo", "books"], "runewiki"),
+    new Question("Where is the most reliable source of info on runescape?", ["google", "RuneWiki", "yahoo", "books"], "RuneWiki"),
     new Question("What is the maxium amount of gold a character can have in runescape", ["100 coins", "2147M coins", "1B coins", "There is no limit"], "2147M coins"),
     new Question("What year did OSRS servers date back to?", ["2007", "2001", "1990", "2015"], "2007"),
     new Question("What is the best money making boss in runescape?", ["Kalphite Queen", "King Black Dragon", "Zulrah", "Raids"], "Raids")
